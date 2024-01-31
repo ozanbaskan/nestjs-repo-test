@@ -1,7 +1,7 @@
-import { Injectable, OnApplicationBootstrap } from "@nestjs/common";
-import { InjectModel } from "@nestjs/sequelize";
-import { User } from "../models/user.model";
-import { Repository } from "src/repository";
+import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
+import { InjectModel } from '@nestjs/sequelize';
+import { User } from '../models/user.model';
+import { Repository } from 'src/repository';
 
 @Injectable()
 export class UserRepository extends Repository {

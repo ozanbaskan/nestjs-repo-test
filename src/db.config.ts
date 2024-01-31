@@ -1,12 +1,12 @@
-import { User } from "./modules/user/models/user.model";
+import { User } from './modules/user/models/user.model';
 
 export const dbConfig = {
-  dialect: "postgres",
-  host: "127.0.0.1",
+  dialect: 'postgres',
+  host: '127.0.0.1',
   port: 5432,
-  username: "elkaso_user",
-  password: "ELKASO@4444",
-  database: "elkaso_dev",
+  username: 'elkaso_user',
+  password: 'ELKASO@4444',
+  database: 'elkaso_dev',
   logging: true,
   models: [User],
   retryAttempts: 5,
