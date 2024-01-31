@@ -1,3 +1,4 @@
+import './globals';
 import { config } from 'dotenv';
 config();
 import { AppModule } from './app.module';

@@ -1,4 +1,4 @@
-import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from '../models/user.model';
 import { Repository } from 'src/repository';
@@ -14,7 +14,7 @@ export class UserRepository extends Repository {
       offset: (page - 1) * limit,
     });
     return {
-      data: users,
+      data: users.eachToJSON(),
     };
   }
 }
