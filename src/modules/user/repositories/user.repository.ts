@@ -9,12 +9,12 @@ export class UserRepository extends Repository {
   private userModel: typeof User;
 
   async getPaginatedUsers(limit: number, page: number) {
-    const user = await this.userModel.findAll({
+    const users = await this.userModel.findAll({
       limit,
       offset: (page - 1) * limit,
     });
     return {
-      data: user,
+      data: users,
     };
   }
 }

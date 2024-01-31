@@ -11,7 +11,7 @@ export abstract class Repository {
     for (const method of methods) {
       const f = this.constructor.prototype[method];
       this.constructor.prototype[method] = async (...args) => {
-        const result = await f.call(this, ...args);
+        const result = getToJSONIfPossible(await f.call(this, ...args));
         loopAndSetJSONs(result);
         return result;
       };
@@ -21,21 +21,16 @@ export abstract class Repository {
 
 const getToJSONIfPossible = (r) => {
   if (r instanceof Model) return r.toJSON();
-  else return r;
+  return r;
 };
 
-const loopAndSetJSONs = (obj: any) => {
-  if (!obj || typeof obj !== 'object') return;
-
-  if (Array.isArray(obj)) {
-    for (let i = 0; i < obj.length; ++i) {
-      obj[i] = getToJSONIfPossible(obj[i]);
-      loopAndSetJSONs(obj[i]);
-    }
-  } else if (typeof obj === 'object') {
+const loopAndSetJSONs = (obj: any, set = new WeakSet()) => {
+  if (!obj || set.has(obj)) return;
+  if (typeof obj === 'object') {
+    set.add(obj);
     for (const key of Object.keys(obj)) {
       obj[key] = getToJSONIfPossible(obj[key]);
-      loopAndSetJSONs(obj[key]);
+      loopAndSetJSONs(obj[key], set);
     }
   }
 };
