@@ -20,7 +20,6 @@ export abstract class Repository {
 
 const getToJSONIfPossible = (r) => {
   if (r instanceof Model) return r.toJSON();
-  else if (Array.isArray(r) && r.every((r) => r instanceof Model)) return r.map((r) => r.toJSON());
   else return r;
 };
 
