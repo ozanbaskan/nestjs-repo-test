@@ -1,7 +1,7 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 @Table({
-  tableName: 'users',
+  tableName: "users",
 })
 export class User extends Model {
   @Column({
@@ -81,5 +81,4 @@ export class User extends Model {
     allowNull: true,
   })
   totpSecret: string;
-
 }
