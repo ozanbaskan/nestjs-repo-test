@@ -7,7 +7,6 @@ export class UserService {
 
   async getUsers() {
     const x = await this.userRepository.getPaginatedUsers(10, 1);
-    console.log(x.data[0], 'bro');
     return x;
   }
 }

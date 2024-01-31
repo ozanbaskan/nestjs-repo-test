@@ -2,6 +2,7 @@ import { Model } from 'sequelize-typescript';
 
 // Every child class method will call toJSON() method in case they are returning a model
 // In this way, services will never be able to do I/O, only repository classes will be able to do them
+// this is not necessary if you always call toJSON from repository services
 export abstract class Repository {
   constructor() {
     const methods = Object.getOwnPropertyNames(this.constructor.prototype).filter(
