@@ -38,6 +38,9 @@ type ModelData<T extends Model<T>> = Omit<
   | 'validate'
   | 'version'
   | 'where'
+  | '_model'
+  | '_attributes'
+  | '_creationAttributes'
 >;
 
 declare module 'sequelize-typescript' {
