@@ -19,12 +19,12 @@ export abstract class Repository {
   }
 }
 
-const getToJSONIfPossible = (r) => {
+export const getToJSONIfPossible = (r) => {
   if (r instanceof Model) return r.toJSON();
   return r;
 };
 
-const loopAndSetJSONs = (obj: any, set = new WeakSet()) => {
+export const loopAndSetJSONs = (obj: any, set = new WeakSet()) => {
   if (!obj || set.has(obj)) return;
   if (typeof obj === 'object') {
     set.add(obj);
